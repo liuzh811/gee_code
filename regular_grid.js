@@ -50,7 +50,7 @@ print (gridlist)    //显示所有的格网（列表）
 
 // Export an ee.FeatureCollection as an Earth Engine asset.
 
-// select grid based on forest area > 20000000000 sq km
+// select grid based on forest area > 2000 sq km
 var grid2 = grid.map(function(i) {         //这一步是通过treecover数据来只留下包含森林的格网
   return i.set('treecover2000', dataset.multiply(ee.Image.pixelArea()).reduceRegion(ee.Reducer.sum(), i.geometry(), 1000).getNumber('treecover2000').divide(1000000)) 
                 //如果格网内不全为0(有森林）则给格网添加属性treecover2000=1，否则添加属性treecover2000=0
